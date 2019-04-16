@@ -1,0 +1,58 @@
+import java.util.ArrayList;
+
+public class AlbumTester4 {
+
+	public static void main(String[] args) {
+		AlbumCollectionRegister register = new AlbumCollectionRegister();
+		ArrayList<Album> albumList = register.getAlbumCollectionRegisterList();
+		
+		Album a1 = new Album("Mencheche Bujang Lapok", 1961, "Parlophone", "Film Soundtrack", "P.Ramlee/Saloma");
+		Album a2 = new Album("Coast To Coast", 2000, "RCA, BMG UK & Ireland", "Pop", "Westlife");
+		Album a3 = new Album("Edcoustic Hits 1 Dekade", 2012, "Kreavisi", "World", "Edcoustic");
+		Album a4 = new Album("Chapters", 2016, "Verve Records", "R&B", "Yuna");
+		Album a5 = new Album("Help!", 1965, "EMI Studios London", "Baroque Pop", "The Beatles" );
+		albumList.add(a1);
+		albumList.add(a2);
+		albumList.add(a3);
+		albumList.add(a4);
+		albumList.add(a5);
+	    a1.addSong(new Song("Mencheche Bujang Lapok", "P.Ramlee", "S.Sudarmaji", 3));
+	    a1.addSong(new Song("Embun Menitik", "P.Ramlee", "S.Sudarmaji", 4));
+	    a2.addSong(new Song("My Love", "Jörgen Elofsson David Kreuger Per Magnusson Pelle Nylén", "Jörgen Elofsson David Kreuger Per Magnusson Pelle Nylén", 3));
+	    a3.addSong(new Song("Muhasabah Cinta", "Aden", "Aden", 3));
+	    a3.addSong(new Song("Sebiru Hari Ini", "Aden", "Aden", 4));
+	    a4.addSong(new Song("Crush", "Zarai, Robinson, Warfield", "Zarai, Robinson, Warfield", 4));
+	    a4.addSong(new Song("Best of Me", "Zarai, Braun, Salva", "Zarai, Braun, Salva", 5));
+	    a4.addSong(new Song("All I Do", "Zarai, David Foster", "Zarai, David Foster", 3));
+	    printAlbumDetails(albumList);
+	    printRareAlbum(albumList);
+	}
+	
+	public static void printAlbumDetails(ArrayList<Album> albumList){
+		for (Album a: albumList) { 
+	    	System.out.println("\nAlbum title : "+ a.getTitle());
+	    	System.out.println("Year released : "+ a.getYearReleased());
+	    	System.out.println("Label : "+ a.getLabel());
+	    	System.out.println("Genre : "+ a.getGenre());
+	    	System.out.println("Singer : "+ a.getSinger());
+	    	a.listSongDetails();
+		}
+	}
+	
+	public static void printRareAlbum(ArrayList<Album> albumList){
+		int numRareAlbum = 0;
+		System.out.println("\nRare Albums");
+		
+		//
+		for(Album a: albumList){
+			if(a.getYearReleased()<1970){
+				System.out.println("Album : "+ a.getTitle()+" - "+a.getSinger()+" "+a.getYearReleased());
+				numRareAlbum ++; 
+			}
+		}
+		//
+
+	    System.out.println("Number of rare albums : " + numRareAlbum);
+	}
+
+}
